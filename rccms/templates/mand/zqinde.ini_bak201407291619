@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0026)http://test164.mandnt.com/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<title>兆和人才招聘网：让每个人都能找到好工作！</title>
+<meta name="description" content="兆和人才招聘网">
+<meta name="keywords" content="兆和人才招聘网">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<link rel="shortcut icon" href="http://test164.mandnt.com/favicon.ico">
+<!--<meta property="qc:admins" content="77522437776156156026375">-->
+<meta property="qc:admins" content="0051206543415565164646375" />
+<link rel="stylesheet" type="text/css" href="{#$QISHI.site_template#}css/haixi.css"/><!--   list.css    -->
+<script type="text/javascript" src="{#$QISHI.site_template#}js/jquery.1.4.2-min.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}js/jquery.tabso_yeso.js"></script>
+<link href="{#$QISHI.site_template#}css/global.css" rel="stylesheet" type="text/css">
+<link href="{#$QISHI.site_template#}css/index-2013.css" rel="stylesheet" type="text/css"> 
+<script src="{#$QISHI.site_template#}js/jquery.js" type="text/javascript" language="javascript"></script> 
+<script src="{#$QISHI.site_template#}js/jquery.lazyload.js" type="text/javascript"></script>
+<script src="{#$QISHI.site_template#}js/lpsjob-public.js" type="text/javascript" language="javascript"></script>
+<link href="{#$QISHI.site_template#}css/style.css" rel="stylesheet" type="text/css"> 
+<script> 
+$(document).ready(function () {  
+		   index("{#$QISHI.site_dir#}","{#$QISHI.site_template#}");
+		   $.get("/plus/ajax_user.php", {"act":"loginform"},
+			function (data,textStatus)
+			 {
+				$("#PageLogin").html(data);
+			 }
+	);	
+})
+</script>
+		<script type="text/javascript">
+function divrefresh(){
+   var m1=document.getElementById('movie1');
+   var m2=document.getElementById('movie2');
+   var m3=document.getElementById('movie3');
+   var m4=document.getElementById('movie4');
+   if(m1.style.display=='block'){
+      m1.style.display='none';
+      m2.style.display='block';
+   } else if(m1.style.display=='block'){
+      m1.style.display='none';
+      m2.style.display='block';
+   }else if(m2.style.display=='block'){
+      m2.style.display='none';
+      m3.style.display='block';
+   }else if(m3.style.display=='block'){
+      m3.style.display='none';
+      m4.style.display='block';
+   }else{
+      m4.style.display='none';
+      m1.style.display='block';
+   }
+}
+</script>
+</head><body>
+
+	
+{#include file="member_header.ini"#}   
+<div class="main">
+<!--mian top部分-->
+  <div class="main-top">
+	<div id="PageLogin">
+    </div> 
+	
+	 <div class="main-M">	
+        <ul class="tabbtn" id="normaltab">
+            <li class="current"><a href="#">急聘职位</a></li>
+            <li><a href="#">人才推荐</a></li>
+        </ul>
+        <div class="main-M-gd"><a href="/resume/resume-list.php">更多>></a></div>
+        <!--tabbtn end-->
+        <div class="tabcon" id="normalcon">
+            <div class="sublist">
+                <ul class="sublist">
+				{#qishi_companyjobs_list set="列表名:company,显示数目:8,显示职位:4,职位名长度:8,企业名长度:13"#}
+					{#foreach from=$company item=list#}
+					{#qishi_jobs_list set="列表名:jobs,职位名长度:8,显示数目:1,会员UID:"|cat:$list.uid#}
+					<li><p><a href="{#$list.company_url#}" title="{#$list.companyname#}">{#$list.companyname#}</a></p><span>{#foreach from=$jobs item=list1#}<a href="{#$list1.jobs_url#}">{#$list1.jobs_name#}</a>{#/foreach#}</span></li>
+					{#/foreach#}
+                </ul>
+            </div><!--tabcon end-->
+            <div class="sublist">
+                <ul>
+					{#qishi_resume_list set="列表名:resume,显示数目:8,意向职位长度:10,填补字符:..,排序:rtime>desc"#}
+						{#foreach from=$resume item=list#}
+							<li><a href="{#$list.resume_url#}" class="sublist-rctj">姓名：<span>{#$list.fullname#}</span>学历：<span>{#$list.education_cn#}</span> 求职：<span>{#$list.intention_jobs#}</span> </a></li>
+						{#/foreach#} 
+                </ul>
+            </div><!--tabcon end-->
+        </div><!--tabcon end-->
+    </div><!--tabbox end-->
+               
+    <div class="main-R">
+    	<div class="main-R-title">
+        	<p>网站公告</p><span><a href="/notice/notice-list.php">更多>></a></span>
+        </div>
+        <ul class="main-R-new">
+		{#qishi_notice_list set="列表名:notice,显示数目:8,标题长度:18,分类:1,填补字符:..."#}
+			{#foreach from=$notice item=list#}
+			<li><a href="{#$list.url#}">{#$list.title#}</a></li>
+			{#/foreach#}
+        </ul>
+    </div>
+    <div class="mar-10"></div>
+  </div>
+<!--mian 品牌企业 部分-->
+<!--mian 推荐企业 部分-->
+ 
+  <div class="main-bg">
+        <div class="main-bg-title">
+      <img src="{#$QISHI.site_template#}images/img/pic1.png" width="316" height="20" /> </div>
+        <div  style="width:968px;float:left;padding:0 15px;">
+            <div class="brand-jobs brand-show clearfix">
+				<ul>
+					
+					 {#qishi_ad set="显示数目:24,调用名称:pinpai,列表名:ad,文字长度:12"#}
+					{#if $ad#}
+					{#foreach from=$ad item=list#}
+					<li onmouseover="showDiv2(this)" onmouseout="showDiv2(this)" class=""> <a href="{#if $list.img_url == ''&&$list.img_uid!=0#}{#$QISHI.site_dir#}c{#$list.img_uid#}{#else#}{#$list.img_url#}{#/if#}" title="{#$list.img_explain#}" target="_blank"><img class="on" src="{#$list.img_path#}" width="142" height="38" alt="{#$list.img_explain#}" /><span>{#$list.img_explain#}</span></a>
+					{#if $list.img_uid != 0#}
+					<div class="shade" style="height: 252px; "></div>
+						<div class="show">
+						  <div class="area">
+							<div class="left">
+							  <ul> 
+							  {#qishi_company_show set="列表名:company,企业ID:"|cat:$list.img_uid#}
+									{#if $company.uid !=''#}
+									{#qishi_jobs_list set="列表名:jobs,填补字符:...,职位名长度:10,显示数目:8,会员UID:"|cat:$company.uid#}
+									{#foreach from=$jobs item=list#}
+									 <li><a href="{#$list.jobs_url#}" target="_blank">·{#$list.jobs_name#}</a></li>
+									{#/foreach#}
+									{#/if#}
+								</ul>
+							</div>
+						</div>
+					</div>
+					{#/if#}                                            
+                    </li> 
+					{#/foreach#}
+					{#/if#}
+				</ul>
+			</div>
+		</div>
+	</div>
+    <div class="clear"></div>
+    <div class="mar10"></div>
+<!--mian 最新招聘 部分-->
+    <div class="main-bg">
+        <div class="main-bg-title">
+            <img src="{#$QISHI.site_template#}images/img/pic3.png" width="228" height="20" /> 
+            <a  href="jobs/jobs-list.php" class="bg-title-more"></a>
+        </div>
+		{#qishi_companyjobs_list set="列表名:company,显示数目:12,显示职位:4,职位名长度:5,企业名长度:16,排序:refreshtime>desc"#}
+		<ul class="new-zp">
+			{#foreach from=$company item=list#}
+			<li>
+				<p>{#$list.companyname#}</p>
+					<div class="new-zp-zw">
+					<span>聘</span>
+						{#foreach from=$list.jobs item=jobslist#}
+							<a href="{#$jobslist.jobs_url#}">{#$jobslist.jobs_name#}</a>
+						{#/foreach#}
+					</div>
+			</li>
+			{#/foreach#}
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="mar10"></div>
+	<!---aaaaaa--->
+	<div class="main2">
+  		<div class="jjzp">
+        	<div class="jjzp_img2"><img src="{#$QISHI.site_template#}images/img/pic2.png" width="247" height="20" /><a class="buttonhyh" onclick="javascript:divrefresh();">换一批</a>
+			</div>
+			<div id="movie1" style="display:block;">
+			 {#qishi_companyjobs_list set="列表名:company,开始位置:0,显示数目:4,企业名长度:16,推荐：1,排序:refreshtime>desc"#}
+			{#foreach from=$company item=list#}
+			{#qishi_company_show set="列表名:show,企业ID:$list.company_id"#}
+           <div class="new_zp pb0">
+                <div class="newzp_img1"><img src="{#$show.logo#}" width="150" height="60" /></div>
+                <div class="newzp_txt1">
+                	<span class="newzp_txt_1"><a href="{#$list.company_url#}">{#$show.companyname#}</a></span>
+                	<span>{#$show.nature_cn#}</span>
+                    <span>{#$show.trade_cn#}</span>
+                    <span>{#$show.scale_cn#}</span>
+                    <span class="bgnone">{#$show.district_cn#}</span>
+                    <div class= "newzp_span1">
+                        <ul>
+							{#foreach from=$list.jobs item=jobslist#} 
+								<li><a href="{#$jobslist.jobs_url#}"> {#$jobslist.jobs_name#}、</a></li>
+							{#/foreach#}
+                        </ul>
+                    </div>
+                </div>
+       	  </div>
+            {#/foreach#}
+			</div>
+			
+			<div id="movie2" style="display:none;">
+			 {#qishi_companyjobs_list set="列表名:company,开始位置:4,显示数目:4,企业名长度:16,推荐：1,排序:refreshtime>desc"#}
+			{#foreach from=$company item=list#}
+			{#qishi_company_show set="列表名:show,企业ID:$list.company_id"#}
+           <div class="new_zp pb0">
+                <div class="newzp_img1"><img src="{#$show.logo#}" width="150" height="60" /></div>
+                <div class="newzp_txt1">
+                	<span class="newzp_txt_1"><a href="{#$list.company_url#}">{#$show.companyname#}</a></span>
+                	<span>{#$show.nature_cn#}</span>
+                    <span>{#$show.trade_cn#}</span>
+                    <span>{#$show.scale_cn#}</span>
+                    <span class="bgnone">{#$show.district_cn#}</span>
+                    <div class= "newzp_span1">
+                        <ul>
+							{#foreach from=$list.jobs item=jobslist#} 
+								<li><a href="{#$jobslist.jobs_url#}"> {#$jobslist.jobs_name#}、</a></li>
+							{#/foreach#}
+                        </ul>
+                    </div>
+                </div>
+       	  </div>
+            {#/foreach#}
+			</div>
+			
+			<div id="movie3" style="display:none;">
+			 {#qishi_companyjobs_list set="列表名:company,开始位置:8,显示数目:4,企业名长度:16,推荐：1,排序:refreshtime>desc"#}
+			{#foreach from=$company item=list#}
+			{#qishi_company_show set="列表名:show,企业ID:$list.company_id"#}
+           <div class="new_zp pb0">
+                <div class="newzp_img1"><img src="{#$show.logo#}" width="150" height="60" /></div>
+                <div class="newzp_txt1">
+                	<span class="newzp_txt_1"><a href="{#$list.company_url#}">{#$show.companyname#}</a></span>
+                	<span>{#$show.nature_cn#}</span>
+                    <span>{#$show.trade_cn#}</span>
+                    <span>{#$show.scale_cn#}</span>
+                    <span class="bgnone">{#$show.district_cn#}</span>
+                    <div class= "newzp_span1">
+                        <ul>
+							{#foreach from=$list.jobs item=jobslist#} 
+								<li><a href="{#$jobslist.jobs_url#}"> {#$jobslist.jobs_name#}、</a></li>
+							{#/foreach#}
+                        </ul>
+                    </div>
+                </div>
+       	  </div>
+            {#/foreach#}
+			</div>
+			
+			<div id="movie4" style="display:none;">
+			 {#qishi_companyjobs_list set="列表名:company,开始位置:12,显示数目:4,企业名长度:16,推荐：1,排序:refreshtime>desc"#}
+			{#foreach from=$company item=list#}
+			{#qishi_company_show set="列表名:show,企业ID:$list.company_id"#}
+           <div class="new_zp pb0">
+                <div class="newzp_img1"><img src="{#$show.logo#}" width="150" height="60" /></div>
+                <div class="newzp_txt1">
+                	<span class="newzp_txt_1"><a href="{#$list.company_url#}">{#$show.companyname#}</a></span>
+                	<span>{#$show.nature_cn#}</span>
+                    <span>{#$show.trade_cn#}</span>
+                    <span>{#$show.scale_cn#}</span>
+                    <span class="bgnone">{#$show.district_cn#}</span>
+                    <div class= "newzp_span1">
+                        <ul>
+							{#foreach from=$list.jobs item=jobslist#} 
+								<li><a href="{#$jobslist.jobs_url#}"> {#$jobslist.jobs_name#}、</a></li>
+							{#/foreach#}
+                        </ul>
+                    </div>
+                </div>
+       	  </div>
+            {#/foreach#}
+			</div>
+        </div>
+	</div>
+
+    <div class="clear"></div>
+    <div class="mar10"></div>
+<!--mian 简历宝典 部分-->
+    <div class="mainbg">
+    	<ul class="mainbg-bd">
+        	<li>
+            	<div class="li-title">
+                    <p>面试宝典 </p>
+                    <a href="/news/news-list.php?id=4" class="li-title-more"></a>
+                </div>
+            	<img src="{#$QISHI.site_template#}images/news/haixi-gai_pic_1.png"/>
+				{#qishi_news_list set="列表名:news,显示数目:10,标题长度:20,资讯小类:4,填补字符:...,排序:id>desc"#}
+					{#foreach from=$news item=list#}
+						<p><a href="{#$list.url#}">{#$list.title#}</a></p>
+					{#/foreach#}
+            </li>
+       	  <li class="mainbg-bd-li">
+            	<div class="li-title">
+                    <p>办公人际</p>
+                    <a href="/news/news-list.php?id=5" class="li-title-more"></a>
+                </div>
+           	  <img src="{#$QISHI.site_template#}images/news/haixi-gai_pic_2.png"/>
+				{#qishi_news_list set="列表名:news,显示数目:10,标题长度:20,资讯小类:5,填补字符:...,排序:id>desc"#}
+					{#foreach from=$news item=list#}
+						<p><a href="{#$list.url#}">{#$list.title#}</a></p>
+					{#/foreach#}
+            </li>
+       	  <li class="mainbg-bd-li">
+            	<div class="li-title">
+                    <p>职场测试</p>
+                    <a href="/news/news-list.php?id=8" class="li-title-more">&nbsp;</a>
+                </div>
+           	  <img src="{#$QISHI.site_template#}images/news/haixi-gai_pic_0.png"/>
+			  {#qishi_news_list set="列表名:news,显示数目:10,标题长度:20,资讯小类:8,填补字符:...,排序:id>desc"#}
+					{#foreach from=$news item=list#}
+						<p><a href="{#$list.url#}">{#$list.title#}</a></p>
+					{#/foreach#}
+            </li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="mar10"></div>
+<!--mian 友情链接 部分-->
+    <div class="mainbg">
+        <div class="mainbg-title">
+            <p>友情链接</p> <span>LINKS</span>
+        </div>
+		 {#qishi_link set="列表名:link,显示数目:100,调用名称:QS_index,类型:1"#}
+        <ul class="friend">
+			{#foreach from=$link item=list#}
+        	<li><a href="{#$list.link_url#}" >{#$list.title_#}</a></li>
+			{#/foreach#}
+        </ul>
+    </div>
+    <div class="clear"></div>
+
+</div> 
+<!-- main end -->   
+<div class="clear"></div>
+<div class="mar10"></div>
+
+{#include file="footer.ini"#}
+
+</body></html>
+	
+
+	

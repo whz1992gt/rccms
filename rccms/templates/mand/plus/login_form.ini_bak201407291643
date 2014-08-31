@@ -1,0 +1,128 @@
+<div class="main-L2">
+	<form id="form1">
+        <div class="main-L-title">会员登录</div>
+        <div class="login">
+           <button  type="button" id="btnPerLogin"  class="login-btn" ><strong>登录</strong></button>
+            <input name="txtPerUser" id="txtPerUser" type="text"  autocomplete="off" onFocus="choooseInput(this);$(this).addClass('input_3_on')" onBlur="choooseInputO(this);$(this).removeClass('input_3_on')" value="用户名或邮箱" />
+            <input name="password" id="txtPerPassword" type="password" autocomplete="off" onFocus="choooseInput1(this);$(this).addClass('input_3_on')" onBlur="choooseInput2(this);$(this).removeClass('input_3_on')" class="input_3_out input_3_none" size="18"  value="......" />
+        </div>
+        <div class="checkbox">
+		<span id="permsg" ></span>
+            <label>
+            <input name="expire" id="expire" type="checkbox" value='7' checked />
+            下次自动登录</label>
+            <p><a href="/user/user_getpass.php">忘记密码？</a></p>
+			
+        </div>
+		
+        <div style="float:left;margin-top:10px;margin-left:10px;"><b>其他账号登陆：</b></div><a style="display: inline" href="/user/connect_qq_client.php" class="login-qq"> </a>
+            <a href="/user/user_reg.php?act=form&type=2" class="main-L-btn-L2">&nbsp;</a>
+            <a href="/user/user_reg.php?act=form&type=1" class="main-L-btn-R2"></a>
+        </form>
+</div>
+	
+	<script language="javascript" type="text/javascript">
+//焦点
+    function onck(a) {
+        $(a).focus();
+        window.setTimeout(function () {
+            innull();
+        }, 100);
+    }
+    //输入时执行
+    function inj(m,b) {
+        var v = $(m).val();
+        if (v == '')
+            $(b).css("display", "");
+             else
+            $(b).css("display", "none");
+         }
+         //验证是否为空
+         function innull() {
+             if ($("#txtPerUser").val() == '') $("#txtPerUserTips").css("display", "");
+             else $("#txtPerUserTips").css("display", "none");
+             if ($("#txtPerPassword").val() == '') $("#txtPerPasswordTips").css("display", "");
+             else $("#txtPerPasswordTips").css("display", "none"); 
+         }
+         $(document).ready(function () {
+             window.setTimeout(function () {
+                 innull();
+             }, 200);
+             HideMsg();
+             $("#btnPerLogin").click(function () {
+                 PerLogin();
+             }); 
+         }); 
+    // 个人
+    function PerCheck() {
+        if ($("#txtPerUser").val() == "") {
+            $('#permsg').show();
+            $("#permsg").html("请填写：用户名 / 邮箱 / 手机号！");
+            setTimeout(HideMsg, 3000);
+            $("#txtPerUser").focus();
+            return false;
+        }
+        if ($("#txtPerPassword").val() == "") {
+            $('#permsg').show();
+            $("#permsg").html("请输入密码！");
+            setTimeout(HideMsg, 3000);
+            $("#txtPerPassword").focus();
+            return false;
+        }
+        return true;
+    }
+    function HideMsg() {
+        $('#permsg').hide();
+        $('#commsg').hide();
+    }     
+    $('#perLogin').find(':input').keydown(function (event) {
+        var e = $.event.fix(event);
+        if (e.keyCode == 13) {
+            $('#btnPerLogin').click();
+        }
+    });
+   function PerLogin() {
+        if (PerCheck()) { 
+		 $('#permsg').show();
+         $("#permsg").html("正在登录中，请稍等！");  
+		  if($("#expire").attr("checked")==true){var expire=$("#expire").val()}else{var expire=""}
+		  $.post("/plus/ajax_user.php", {"username": $("#txtPerUser").val(),"password": $("#txtPerPassword").val(),"expire":expire,"url":"","postcaptcha":'',"time": new Date().getTime(),"act":"do_login"},
+					function (data,textStatus)
+					 {
+						if (data=="err" || data=="errcaptcha")
+						{			
+							if (data=="err")
+							{
+						      $('#permsg').show();
+                              $("#permsg").html("<font color=red>帐号和密码不符，请重新登录!</font>");
+                              setTimeout(HideMsg, 3000);
+
+							}
+							else if(data=="errcaptcha")
+							{
+						      $('#permsg').show();
+                              $("#permsg").html("<font color=red>验证码错误!</font>");
+                              setTimeout(HideMsg, 3000);
+							}
+						}
+						else
+						{
+							$("body").append(data);
+						}
+					 })	
+        }
+    }  
+    //保存密码提示
+    function showTooltip(obj, msg) {
+        $("#pertip").html(msg);
+        $("#pertip").show();
+        $("#comtip").html(msg);
+        $("#comtip").show();
+    }
+    function closeToolTip() {
+        $("#pertip").html("");
+        $("#pertip").hide();
+        $("#comtip").html("");
+        $("#comtip").hide();
+    } 
+</script>

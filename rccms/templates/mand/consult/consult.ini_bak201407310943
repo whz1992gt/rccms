@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0026)http://test164.mandnt.com/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+{#qishi_pageinfo set="列表名:pageinfo,调用:QS_newslist,分类ID:GET[id]"#}
+{#if $pageinfo.title#}
+<title>{#$pageinfo.title#}</title>
+{#else#}
+<title>资讯中心 -  {#$category.categoryname#} - {#$QISHI.site_name#}</title>
+{#/if#}
+<meta name="description" content="{#$pageinfo.description#}">
+<meta name="keywords" content="{#$pageinfo.keywords#}">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico">
+<meta property="qc:admins" content="77522437776156156026375">
+<link href="{#$QISHI.site_template#}css/global.css" rel="stylesheet" type="text/css">
+<link href="{#$QISHI.site_template#}css/list-global.css" rel="stylesheet" type="text/css">
+<link href="{#$QISHI.site_template#}css/index-2013.css" rel="stylesheet" type="text/css"> 
+<script src="{#$QISHI.site_template#}js/jquery.js" type="text/javascript" language="javascript"></script> 
+<script src="{#$QISHI.site_template#}js/jquery.lazyload.js" type="text/javascript"></script>
+<script src="{#$QISHI.site_template#}js/lpsjob-public.js" type="text/javascript" language="javascript"></script>
+<link href="{#$QISHI.site_template#}css/style.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+  .page-next a{
+    padding:3px 6px;
+  }
+</style>
+<script> 
+ $(document).ready(function(){
+    // var i = 0; 
+    $('.l-more').click(function(){
+      //alert('第一步');
+      $('#lib_Tab2').html($('#req_zcfg').html());
+      // $('#page_zcfg > a').each(function(){
+      //   alert($(this).text());
+      //   i = i + 1;
+      // });
+      // alert(i);
+      $('.t').hide();
+    });
+ })
+
+
+	
+/* tab js*/
+
+function setTab(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+
+</script>
+</head><body data-savefrom-link-count="96">
+<!--I can get content then hidden it-->
+<div style="display:none">
+  <div id="req_zcfg">
+    {#qishi_news_list set="列表名:news,显示数目:10,标题长度:16,分页显示:1,摘要长度:100,填补字符:...,资讯小类:6,列表页:communion"#}
+    <div class="con_line"></div>
+    {#foreach from=$news item=list#}
+    <div class="con_all">
+        <div class="con_list"><img src="{#$QISHI.site_template#}images/img/zixun_ico1.jpg" /></div>
+        <a href="{#$list.url#}" target="_blank" class="con_span">{#$list.title#}</a>
+        <div class="con_time">{#$list.addtime|date_format:"%Y-%m-%d"#}</div>
+        <div class="con_txt"><span>{#$list.briefly#}<a style="float:none" href="{#$list.url#}">[全文]</a></span></div>
+    </div>
+    {#/foreach#}
+    <!--<table border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="50"><div class="page-next" id="page_zcfg">{#$page#}</div></td>
+        </tr>
+    </table>-->
+  </div>  
+</div>
+{#include file="user/header.ini"#}
+<div class="page_location link_bk">
+当前位置：<a href="{#$QISHI.site_dir#}">首页</a>&nbsp;>>&nbsp;<a href="{#"consult"|qishi_url#}">政策咨询</a>
+</div>
+<!-- main begin -->     
+<div class="main">
+  <div class="leftbox">
+      <div class="l-content">
+         <h3><a href="#" class="l-tittle">政策法规<!--劳动法规--></a><a href="#" class="l-more"><img src="{#$QISHI.site_template#}images/img/more.png" width="36" height="18" /></a></h3>
+         <ul class="zclist" id="test">
+           {#qishi_news_list set="列表名:list,显示数目:12,资讯小类:6"#}
+           {#foreach from=$list item=li#}
+             <li>·<a href="{#$li.url#}" target="_blank">{#$li.title#}</a></li>
+           {#/foreach#}
+         </ul>
+      </div>
+      <div class="mar-10"></div>
+         <div class="l-content">
+         <h3><a href="#" class="l-tittle">求职指南<!--面试宝典--></a><a href="#" class="l-more"><img src="{#$QISHI.site_template#}images/img/more.png" width="36" height="18" /></a></h3>
+         <ul class="zclist">
+          {#qishi_news_list set="列表名:list,显示数目:12,资讯小类:4"#}
+          {#foreach from=$list item=li#}
+             <li>·<a href="{#$li.url#}" target="_blank">{#$li.title#}</a></li>
+          {#/foreach#}
+         </ul>
+      </div>
+      <div class="mar-10"></div>
+         <div class="l-content">
+         <h3><a href="#" class="l-tittle">职业规划<!--职业指导--></a><a href="#" class="l-more"><img src="{#$QISHI.site_template#}images/img/more.png" width="36" height="18" /></a></h3>
+         <ul class="zclist">
+            {#qishi_news_list set="列表名:list,显示数目:12,资讯小类:2"#}
+          {#foreach from=$list item=li#}
+
+             <li>·<a href="{#$li.url#}" target="_blank">{#$li.title#}</a></li>
+          {#/foreach#}
+         </ul>
+      </div>
+      <div class="mar-10"></div>
+  </div>
+   <div class="zixun_rightbox">
+<!--tab  begin-->
+        <div id="lib_Tab2">
+            <div class="lib_Menubox lib_tabborder">
+                <ul>
+                    <div style="float:left"><li id="two1" onClick="setTab('two',1,4)" class="hover">最新</li></div>
+                    <div class="bg"></div>
+                    <li id="two2" onClick="setTab('two',2,4)">最热</li>
+                </ul>
+            </div>
+            <div class="lib_Contentbox lib_tabborder">  
+           	 	<!--最新-->
+              <div id="con_two_1">
+                {#qishi_news_list set="列表名:news,显示数目:10,标题长度:16,分页显示:1,摘要长度:100,填补字符:...,列表页:consult,资讯小类:4,排序:id>desc"#}
+                <div class="con_line"></div>
+                {#foreach from=$news item=list#}
+                <div class="con_all">
+                    <div class="con_list"><img src="{#$QISHI.site_template#}images/img/zixun_ico1.jpg" /></div>
+                    <a href="{#$list.url#}" target="_blank" class="con_span">{#$list.title#}</a>
+                    <div class="con_time">{#$list.addtime|date_format:"%Y-%m-%d"#}</div>
+                    <div class="con_txt"><span>{#$list.briefly#}<a style="float:none" href="{#$list.url#}">[全文]</a></span></div>
+                </div>
+                {#/foreach#}
+                </div>      
+              </div>
+               	<!--最新 end-->
+                <!--最热-->
+                <div id="con_two_2" style="display: none;">
+                	<div class="con_line"></div>
+                  {#qishi_news_list set="列表名:news,显示数目:10,标题长度:16,分页显示:1,摘要长度:100,填补字符:...,列表页:consult,资讯小类:4,排序:click>desc"#}
+                  {#foreach from=$news item=list#}
+                  <div class="con_all">
+                    <div class="con_list"><img src="{#$QISHI.site_template#}images/img/zixun_ico1.jpg" /></div>
+                    <a href="{#$list.url#}" target="_blank" class="con_span">{#$list.title#}</a>
+                    <div class="con_time">{#$list.addtime|date_format:"%Y-%m-%d"#}</div>
+                    <div class="con_txt"><span>{#$list.briefly#}<a style="float:none" href="{#$list.url#}">[全文]</a></span></div>  
+                </div>
+                {#/foreach#}
+                    </div>
+                </div>
+                <!---->
+    <table border="0" align="center" cellpadding="0" cellspacing="0" class="t">
+      <tr>
+        <td height="50"><div class="page-next">{#$page#}</div></td>
+      </tr>
+    </table>
+    </div>
+            </div>
+
+<!--tab end-->
+   </div>
+</div> 
+<!-- main end -->   
+{#include file="user/footer.ini"#}
+
+
+</body></html>

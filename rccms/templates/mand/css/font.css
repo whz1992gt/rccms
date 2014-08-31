@@ -1,0 +1,114 @@
+.f12 {
+	FONT-SIZE: 12px
+}
+.f14 {
+	FONT-SIZE: 14px
+}
+.f12b {
+	FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
+.f14b {
+	FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.black_n {
+	COLOR: #666
+}
+.grey_n {
+	COLOR: #999
+}
+.red_n {
+	COLOR: #f00
+}
+.deep_red_n {
+	COLOR: #c00
+}
+.light_red_n {
+	COLOR: #ffd4d4
+}
+.white_n {
+	COLOR: #fff
+}
+.blue_n {
+	COLOR: #4367d2
+}
+.orange_n {
+	COLOR: #f36802
+}
+.purple_n {
+	COLOR: #c11ff9
+}
+.white {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.white:hover {
+	COLOR: #fc0
+}
+.orange {
+	COLOR: #f90; TEXT-DECORATION: none
+}
+.orange:hover {
+	COLOR: #fc0
+}
+.green {
+	COLOR: #3c0; TEXT-DECORATION: none
+}
+.green:hover {
+	COLOR: #390
+}
+.red {
+	COLOR: #c00; TEXT-DECORATION: none
+}
+.red:hover {
+	COLOR: #f00
+}
+.red_l A {
+	COLOR: #f00; TEXT-DECORATION: none
+}
+.red_l A:hover {
+	COLOR: #f90
+}
+.black_l A {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.black_l A:hover {
+	COLOR: #666
+}
+.black {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.black:hover {
+	COLOR: #666
+}
+.grey_l A {
+	COLOR: #999; TEXT-DECORATION: none
+}
+.grey_l A:hover {
+	COLOR: #666
+}
+.deep_grey_l A {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.deep_grey_l A:hover {
+	COLOR: #999
+}
+.blue_l A {
+	COLOR: #4367d2; TEXT-DECORATION: none
+}
+.blue_l A:hover {
+	COLOR: #36f
+}
+.white_l A {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.white_l A:hover {
+	COLOR: #ededed
+}
+.purple_l A {
+	COLOR: #c11ff9; TEXT-DECORATION: none
+}
+.purple_l A:hover {
+	COLOR: #d361fb
+}
+.deep_orange A {
+	COLOR: #ff6c03
+}

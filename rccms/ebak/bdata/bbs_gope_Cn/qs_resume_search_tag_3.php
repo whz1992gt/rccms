@@ -1,0 +1,114 @@
+<?php
+require("../../inc/header.php");
+
+/*
+		SoftName : EmpireBak Version 2010
+		Author   : wm_chief
+		Copyright: Powered by www.phome.net
+*/
+
+DoSetDbChar('gbk');
+E_D("replace into `qs_resume_search_tag` values('5703','1','4','7025','75','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5704','1','4','7026','79','30','467','68','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5705','1','4','7027','74','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5707','1','4','7029','74','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5708','1','4','7030','75','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5709','1','4','7037','75','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5710','1','4','7038','76','30','467','65','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5711','1','4','7039','77','30','467','66','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5712','1','4','7040','79','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5713','1','4','7041','77','30','467','70','169','172','252','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5714','1','4','7042','77','538','0','70','162','171','172','252','0');");
+E_D("replace into `qs_resume_search_tag` values('5715','1','4','7043','76','30','467','70','169','172','252','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5716','1','4','7044','74','30','467','69','169','171','172','252','0');");
+E_D("replace into `qs_resume_search_tag` values('5717','1','4','7047','76','30','467','66','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5718','1','4','7048','78','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5719','1','4','7049','74','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5720','1','4','7050','76','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5721','1','4','7051','77','30','467','68','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5722','1','4','7053','77','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5723','1','4','7054','74','30','467','68','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5724','1','4','7055','74','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5727','1','4','7058','76','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5725','1','4','7056','77','30','467','68','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5726','1','4','7057','76','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5728','1','4','7059','77','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5730','1','4','7060','75','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5729','1','4','7061','74','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5731','1','4','7062','78','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5732','1','4','7063','76','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5733','1','4','7064','77','30','467','68','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5734','1','4','7065','74','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5735','1','4','7066','74','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5736','1','4','7068','75','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5737','1','4','7070','74','30','467','68','155','166','169','171','252');");
+E_D("replace into `qs_resume_search_tag` values('5738','1','4','7071','79','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5739','1','4','7072','76','30','467','68','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5740','1','4','7073','75','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5741','1','4','7074','75','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5742','1','4','7075','75','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5743','1','4','7076','76','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5744','1','4','7077','74','30','471','69','169','171','172','252','0');");
+E_D("replace into `qs_resume_search_tag` values('5745','1','4','7078','74','30','467','69','169','171','172','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5746','1','4','7079','74','30','467','69','169','172','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5747','1','4','7080','77','30','467','69','162','169','172','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5748','1','4','7081','76','30','467','69','169','172','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5749','1','4','7083','74','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5750','1','4','7084','77','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5751','1','4','7085','74','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5752','1','4','7086','74','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5753','1','4','7087','77','30','467','66','160','169','171','172','252');");
+E_D("replace into `qs_resume_search_tag` values('5754','1','4','7088','76','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5755','1','4','7089','76','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5757','1','4','7090','74','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5758','1','4','7091','74','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5759','1','4','7092','74','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5760','1','4','7093','74','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5761','1','4','7095','76','30','467','69','157','160','169','172','252');");
+E_D("replace into `qs_resume_search_tag` values('5762','1','4','7096','76','30','467','70','169','171','172','252','0');");
+E_D("replace into `qs_resume_search_tag` values('5763','1','4','6844','76','30','467','68','155','157','160','165','172');");
+E_D("replace into `qs_resume_search_tag` values('5764','1','4','7098','76','30','467','71','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5765','1','4','7105','74','30','467','70','169','171','172','252','0');");
+E_D("replace into `qs_resume_search_tag` values('5766','1','4','7106','76','30','467','69','157','169','172','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5767','1','4','7112','74','30','467','70','169','171','172','252','0');");
+E_D("replace into `qs_resume_search_tag` values('5768','1','4','7114','74','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5769','1','4','7103','75','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5770','1','4','7118','76','30','467','69','171','252','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5771','1','4','7119','76','30','467','69','155','157','171','172','173');");
+E_D("replace into `qs_resume_search_tag` values('5773','1','4','7125','76','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5774','1','4','7128','75','30','467','69','155','157','160','163','172');");
+E_D("replace into `qs_resume_search_tag` values('5776','1','4','7131','75','30','467','70','157','160','169','172','252');");
+E_D("replace into `qs_resume_search_tag` values('5775','1','4','7132','76','538','0','69','155','160','169','172','252');");
+E_D("replace into `qs_resume_search_tag` values('5777','1','4','7135','77','30','0','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5780','1','4','7138','75','30','0','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5781','1','4','7139','75','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5782','1','4','7140','74','30','467','70','160','169','171','172','252');");
+E_D("replace into `qs_resume_search_tag` values('5783','1','4','7144','76','30','467','70','156','171','172','252','0');");
+E_D("replace into `qs_resume_search_tag` values('5784','1','4','7143','76','30','467','70','160','169','171','172','252');");
+E_D("replace into `qs_resume_search_tag` values('5785','1','4','7145','75','30','467','70','165','169','171','172','252');");
+E_D("replace into `qs_resume_search_tag` values('5786','1','4','7146','74','30','467','70','163','171','172','174','252');");
+E_D("replace into `qs_resume_search_tag` values('5787','1','4','7147','74','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5788','1','4','7148','75','30','467','69','158','160','165','169','174');");
+E_D("replace into `qs_resume_search_tag` values('5789','1','4','7151','77','30','467','70','155','171','172','252','0');");
+E_D("replace into `qs_resume_search_tag` values('5790','1','4','7154','79','30','467','66','155','162','163','165','172');");
+E_D("replace into `qs_resume_search_tag` values('5791','1','4','7155','77','30','467','69','155','160','169','172','252');");
+E_D("replace into `qs_resume_search_tag` values('5794','1','4','7158','75','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5795','1','4','7159','74','30','467','70','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5796','1','4','7160','74','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5797','1','4','7163','76','30','467','69','172','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5799','1','4','7167','74','30','467','70','165','169','171','172','252');");
+E_D("replace into `qs_resume_search_tag` values('5800','1','4','7168','76','30','467','69','155','160','165','169','172');");
+E_D("replace into `qs_resume_search_tag` values('5801','1','4','7171','77','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5802','1','4','7172','76','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5803','1','4','7174','76','30','467','69','162','166','169','171','0');");
+E_D("replace into `qs_resume_search_tag` values('5804','1','4','7177','75','30','467','70','155','156','160','172','252');");
+E_D("replace into `qs_resume_search_tag` values('5805','1','4','7178','76','30','467','69','157','163','165','171','172');");
+E_D("replace into `qs_resume_search_tag` values('5806','1','4','7179','75','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5807','1','4','7180','76','30','467','69','0','0','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5808','1','4','7184','74','30','467','70','169','252','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5809','1','4','7188','74','30','467','69','169','252','0','0','0');");
+E_D("replace into `qs_resume_search_tag` values('5810','1','4','7189','75','30','467','70','169','171','172','174','252');");
+E_D("replace into `qs_resume_search_tag` values('5811','1','4','7190','74','30','467','69','160','163','169','172','252');");
+
+require("../../inc/footer.php");
+?>

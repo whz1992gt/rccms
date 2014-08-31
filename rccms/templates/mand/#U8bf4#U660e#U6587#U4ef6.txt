@@ -1,0 +1,1 @@
+qs_members  avatars字段的字符长度要改为 varchar(20)

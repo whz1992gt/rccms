@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{#if $smarty.get.category#}{#"QS_jobs,"|cat:$smarty.get.category|qishi_categoryname#} - {#/if#}{#if $smarty.get.subclass#}{#"QS_jobs,"|cat:$smarty.get.subclass|qishi_categoryname#} - {#/if#}{#if $smarty.get.district#}{#"QS_district,"|cat:$smarty.get.district|qishi_categoryname#} - {#/if#}{#if $smarty.get.sdistrict#}{#"QS_district,"|cat:$smarty.get.sdistrict|qishi_categoryname#} - {#/if#}{#if $smarty.get.experience#}{#"QS_experience,"|cat:$smarty.get.experience|qishi_categoryname#} - {#/if#}{#if $smarty.get.education#}{#"QS_education,"|cat:$smarty.get.education|qishi_categoryname#} - {#/if#} {#if $smarty.get.photo=="1"#}照片人才 - {#/if#}{#if $smarty.get.talent=="2"#}高级人才 - {#/if#}简历列表  - {#$QISHI.site_name#}</title>
+<meta name="description" content="{#if $smarty.get.category_cn && $smarty.get.subclass#}{#$smarty.get.category_cn#},{#/if#}{#if $smarty.get.district_cn && $smarty.get.sdistrict#}{#$smarty.get.district_cn#} {#/if#},{#$QISHI.site_name#}人才信息,人才简历">
+<meta name="keywords" content="{#if $smarty.get.category_cn && $smarty.get.subclass#}{#$smarty.get.category_cn#},{#/if#}{#if $smarty.get.district_cn && $smarty.get.sdistrict#}{#$smarty.get.district_cn#} {#/if#}，人才信息，高级人才，求职信息，推荐人才，{#$QISHI.site_name#}">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
+<link href="{#$QISHI.site_template#}css/global.css" rel="stylesheet" type="text/css">
+
+<link href="{#$QISHI.site_template#}css/list-global.css" rel="stylesheet" type="text/css">
+<link href="{#$QISHI.site_template#}css/list-company.css" rel="stylesheet" type="text/css">
+
+<link href="{#$QISHI.site_template#}css/index-2013.css" rel="stylesheet" type="text/css"> 
+<script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
+<script src="{#$QISHI.site_template#}js/jquery.dialog.js" type='text/javascript' ></script>
+<script src="{#$QISHI.site_template#}js/jquery.highlight-3.js" type='text/javascript' ></script>
+<script src="{#$QISHI.site_template#}js/jquery.vtip-min.js" type='text/javascript' ></script>
+<script src="{#$QISHI.site_template#}js/jquery.resume-list.js" type='text/javascript'></script>
+<script src="{#$QISHI.site_template#}js/lpsjob-public.js"  type='text/javascript' ></script>
+<script src="{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+<script src="{#$QISHI.site_template#}js/jquery.lazyload.js" type="text/javascript"></script>
+<script src="{#$QISHI.site_template#}js/lpsjob-public.js" type="text/javascript" language="javascript"></script>
+<link href="{#$QISHI.site_template#}css/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  .hr{
+    background:none repeat scroll 0 0 #0073b0;
+    border-radius:3px;
+    color:#fff;
+    text-decoration: none;
+  }
+</style>
+<script type="text/javascript"> 
+$(document).ready(function()
+{
+  resumelist();
+  favorites("{#$QISHI.site_dir#}");
+  recommend_resume("{#$QISHI.site_dir#}");
+});
+</script>
+<script type="text/javascript"> 
+$(document).ready(function()
+{
+  resumelist();
+  favorites("/");
+  recommend_resume("/");
+  var nav=$(".s-title-main");
+  var headHeight=nav.height()+425;
+  $(window).scroll(function()
+  {
+  if($(this).scrollTop()>headHeight)
+  {
+  nav.addClass("navFix");
+  }
+  else
+  {
+  nav.removeClass("navFix");
+  }
+  });
+
+  $("#Button1").click(function()
+  {  
+    search_location();
+  });
+});
+</script>
+</head>
+<body>
+{#include file="user/header.ini"#}
+<div class="container">
+ <div class="search-nav clearfix" style="border-bottom:2px solid #31378f">
+  <ul>
+    <li id="cur" style="background:none repeat scroll 0 0 #31378f"><a href="{#"QS_resumelist"|qishi_url#}" class="select">全能搜索</a></li>
+    <li><a href="{#"QS_resumetag"|qishi_url#}">标签搜索</a></li>
+    <li><a href="/resume/resume-photo.php">照片选才</a></li>
+  </ul>
+</div>
+<div class="resumesearchbox link_bkg" id="resumesearchbox"><div class="loading"></div></div>
+<script src="{#$QISHI.site_template#}js/jquery.resume-search.js" type='text/javascript'></script>
+<script type="text/javascript">
+  var getstr="{#$smarty.get.category#},{#$smarty.get.subclass#},{#$smarty.get.district#},{#$smarty.get.sdistrict#},{#$smarty.get.experience#},{#$smarty.get.education#},{#$smarty.get.sex#},{#$smarty.get.photo#},{#$smarty.get.talent#},{#$smarty.get.inforow#}";  
+  var defaultkey="请输入：技能，特长，职位{#if $QISHI.resumesearch_type=='1'#}，学历，姓名，地区，学校等{#/if#}...";
+  var getkey="{#$smarty.get.key#}";
+  if (getkey=='')
+  {
+  getkey=defaultkey;
+  }
+  allaround('{#$QISHI.site_template#}','{#$QISHI.site_dir#}','QS_resumelist',getkey,getstr);
+</script>
+{#qishi_resume_list set="列表名:resume,分页显示:1,显示数目:GET[inforow],特长描述长度:130,填补字符:...,关键字:GET[key],职位分类:GET[jobcategory],职位大类:GET[category],职位小类:GET[subclass],学历:GET[education],工作经验:GET[experience],性别:GET[sex],地区分类:GET[citycategory],地区大类:GET[district],地区小类:GET[sdistrict],照片:GET[photo],,等级:GET[talent],排序:rtime>desc"#}
+<form action="" method="post"  name="formresumelist" id="formresumelist"  target="_blank">
+  <div class="search-main shadow">
+    <div class="s-title-main">
+      <div class="s-title clearfix">
+        <ul>
+          <li class="select">
+            <label>
+              <input name="selectall" type="checkbox" value="" id="selectall"/>
+              &nbsp;全选</label>
+          </li>
+          <li class="domain"><a href="javascript:void(0)" class="allfavorites" title="加入人才库" style="width:82px;">加入人才库</a></li>
+          <li class="sort"><a href="javascript:void(0)" class="selected"  title="最新发布">最新</a></li>
+          <li class="sort"><a href="javascript:void(0)"  title="工资从高到低">工资</a></li>
+          <li class="sort"><a href="javascript:void(0)"  title="学历从高到低">学历</a></li>
+          <li class="sort"><a href="javascript:void(0)"  title="经验从高到低">经验</a></li>
+      <li class="domain spages"><span>每页：</span><a href="{#"QS_resumelist,inforow:10-page:1-category:"|cat:$smarty.get.category|cat:"-subclass:"|cat:$smarty.get.subclass|cat:"-district:"|cat:$smarty.get.district|cat:"-sdistrict:"|cat:$smarty.get.sdistrict|cat:"-experience:"|cat:$smarty.get.experience|cat:"-education:"|cat:$smarty.get.education|cat:"-sex:"|cat:$smarty.get.sex|cat:"-photo:"|cat:$smarty.get.photo|cat:"-talent:"|cat:$smarty.get.talent|cat:"-sort:"|cat:$smarty.get.sort|qishi_url#}"  {#if $smarty.get.inforow=="10" || $smarty.get.inforow==""#}class="select"{#/if#}>10</a>
+      <a href="{#"QS_resumelist,inforow:20-page:1-category:"|cat:$smarty.get.category|cat:"-subclass:"|cat:$smarty.get.subclass|cat:"-district:"|cat:$smarty.get.district|cat:"-sdistrict:"|cat:$smarty.get.sdistrict|cat:"-experience:"|cat:$smarty.get.experience|cat:"-education:"|cat:$smarty.get.education|cat:"-sex:"|cat:$smarty.get.sex|cat:"-photo:"|cat:$smarty.get.photo|cat:"-talent:"|cat:$smarty.get.talent|cat:"-sort:"|cat:$smarty.get.sort|qishi_url#}" {#if $smarty.get.inforow=="20"#}class="select"{#/if#}>20</a>
+      <a href="{#"QS_resumelist,inforow:30-page:1-category:"|cat:$smarty.get.category|cat:"-subclass:"|cat:$smarty.get.subclass|cat:"-district:"|cat:$smarty.get.district|cat:"-sdistrict:"|cat:$smarty.get.sdistrict|cat:"-experience:"|cat:$smarty.get.experience|cat:"-education:"|cat:$smarty.get.education|cat:"-sex:"|cat:$smarty.get.sex|cat:"-photo:"|cat:$smarty.get.photo|cat:"-talent:"|cat:$smarty.get.talent|cat:"-sort:"|cat:$smarty.get.sort|qishi_url#}" {#if $smarty.get.inforow=="30"#}class="select"{#/if#}>30</a>
+      <li class="line-w"></li>
+          <li class="view-toggle"> <span class="detail"><a href="javascript:void(0)" onclick="moder(true); return false" title="切换到详情" class="selected"></a></span> <span class="list" style="padding:0;"><a href="javascript:void(0)" onclick="moder(); return false" title="切换到列表" ></a></span> </li>
+        </ul>
+      </div>
+    </div>
+    <!-- s-title end --> 
+   {#if $jobstype neq '1'#}
+   <div class="lst-search">
+      <ul>
+        <li class="tit" style="font-size:12px;margin-top:0;padding-bottom:0;">
+          <p class="p1">姓名</p>
+          <p class="p2">性别</p>
+          <p class="p3">年龄</p>
+          <p class="p4">学历</p>
+          <p class="p5">经验</p>
+          <p class="p8">求职意向</p>
+          <p class="p9">月薪要求</p>
+          <p class="p9">完整度</p>
+          <p class="p6">更新时间</p>
+          <p class="p7">操作</p>
+        </li>{#foreach from=$resume item=list#}
+                <li class="bg-row list" style="width:998px;line-height:50px;">
+          <p class="p1" style="padding-right:0;line-height:50px;">
+            <input name="jid" type="checkbox" value="{#$list.id#}"  style="width:10px;height:10px;"/>
+           <a href="{#$list.resume_url#}" target="_blank" class="blue blod">{#$list.fullname#}</a></p>
+          <p class="p2" style="padding-right:0;line-height:50px;">{#$list.sex_cn#}</p>
+          <p class="p3" style="padding-right:0;line-height:50px;">{#$list.age#}</p>
+          <p class="p4" style="padding-right:0;line-height:50px;"><a href="{#"QS_resumelist,education:"|cat:$list.education|qishi_url#}">{#$list.education_cn#}</a></p>
+          <p class="p5" style="padding-right:0;line-height:50px;"><a href="{#"QS_resumelist,experience:"|cat:$list.experience|qishi_url#}">{#$list.experience_cn#}</a></p>
+          <p class="p8" style="padding-right:0;line-height:50px;" title="{#$list.intention_jobs#}">{#$list.intention_jobs#}</p>
+          <p class="p9" style="padding-right:0;line-height:50px;">4000</p>
+          <p class="p9" style="padding-right:0;line-height:50px;">{#$list.complete_percent#}%</p>
+          <p class="p6" style="padding-right:0;line-height:50px;"><span style="color:#FF3300">{#$list.refreshtime_cn#}</span></p>
+          <p class="p7" style="padding-right:0;line-height:50px;">
+          <span style="text-align:center;"><a href="{#$list.resume_url#}"  target="_blank" class="blue" style="text-align:center;margin-left:50px;color:#057bd2;">查&nbsp;&nbsp;看</a></span>
+        </li>
+    {#/foreach#}       
+     </div>
+      {#else#}
+  <div class="d-search">
+      <ul>{#foreach from=$resume item=list#}
+        <li class="clearfix list">
+     <div class="d-s-l">
+            <p class="pos_input">
+              <input name="jid" type="checkbox" value="{#$list.id#}"  />
+            </p>
+            <p class="pos-name"><a href="{#$list.resume_url#}" class="blue blod" target="_blank">{#$list.fullname#}</a>
+  {#if $list.photo=="1"#} <img src="{#$QISHI.site_template#}images/65.gif" border="0" align="absmiddle"  title="有照片"  class="vtip"/>{#/if#}
+  {#if $list.talent=="2"#} <img src="{#$QISHI.site_template#}images/66.gif" border="0" align="absmiddle"  title="高级人才"  class="vtip"/>{#/if#}<dfn><em class="col-6 normal">求职：</em>{#$list.intention_jobs#}</dfn></p>
+            <p class="pos-info"><strong class="m-0">性别：</strong><a href="{#"QS_resumelist,sex:"|cat:$list.sex|qishi_url#}">{#$list.sex_cn#}</a><strong>年龄：</strong>{#$list.age#}岁<strong>学历：</strong><a href="{#"QS_resumelist,education:"|cat:$list.education|qishi_url#}">{#$list.education_cn#}</a><strong>工作经验：</strong><a href="{#"QS_resumelist,experience:"|cat:$list.experience|qishi_url#}">{#$list.experience_cn#}</a><strong>工作地点：</strong><a href="{#"QS_resumelist,district:"|cat:$list.district|cat:"-sdistrict:"|cat:$list.sdistrict|qishi_url#}">{#$list.district_cn#}</a><strong>完整度：</strong>{#$list.complete_percent#}%</p>
+            <p class="pos-info"><strong class="m-0">婚姻：</strong>{#$list.marriage_cn#} <strong>月薪要求：</strong>{#$list.wage_cn#} <strong>最近工作过的职位:</strong> {#$list.recentjobs|default:"无"#}</p>
+            <p class="pos-info">{#$list.specialty#}
+</p>
+          </div>
+          <div class="d-s-r">
+            <p class="center" style="height:50px;line-height:50px"><a href="{#$list.resume_url#}"  target="_blank" class="blue">[查看详细]</a></p>
+            <p class="pos-time">{#$list.refreshtime_cn#}</p>
+          </div>
+        </li>
+    {#/foreach#}
+    </ul>
+    </div>
+ {#/if#}
+     </form>
+   <div class="clear"></div>
+    {#if $page#}
+    <div class="page-next">{#$page#}<div class="clear"></div>
+    </div>{#/if#}
+   </div>
+
+</div>
+</div>
+<div class="clear"></div>
+{#include file="user/footer.ini"#}
+</body>
+</html>

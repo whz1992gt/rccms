@@ -1,0 +1,22 @@
+<?php
+$dbhost   = "localhost";
+
+$dbname   = "test155";
+
+$dbuser   = "test155";
+
+$dbpass   = "87580700";
+
+$pre    = "qs_";
+
+$QS_cookiedomain = '';
+
+$QS_cookiepath =  "/";
+
+$QS_pwdhash = "#9R#KORYLm3Xpl?b";
+
+define('QISHI_CHARSET','gb2312');
+
+define('QISHI_DBCHARSET','GBK');
+
+?>

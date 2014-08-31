@@ -1,0 +1,4 @@
+﻿name:原野
+version:mand
+author:mand
+authorurl:http://www.mandnt.com

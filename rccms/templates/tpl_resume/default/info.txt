@@ -1,0 +1,4 @@
+name:д╛ходё╟Ф
+version:mand
+author:mand
+authorurl:http://www.mandnt.com

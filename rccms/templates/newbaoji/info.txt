@@ -1,0 +1,4 @@
+name:ÐÂ±¦¼¦·ç¸ñ
+version:gopecn
+author:gope.cn
+authorurl:http://www.mandnt.com

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0026)http://test164.mandnt.com/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+{#qishi_news_category set="列表名:category,名称长度:10,资讯小类:GET[id]"#}<!--获取资讯分类名称 --><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+{#qishi_pageinfo set="列表名:pageinfo,调用:QS_newslist,分类ID:GET[id]"#}
+{#if $pageinfo.title#}
+<title>{#$pageinfo.title#}</title>
+{#else#}
+<title>资讯中心 -  {#$category.categoryname#} - {#$QISHI.site_name#}</title>
+{#/if#}
+<meta name="description" content="{#$pageinfo.description#}">
+<meta name="keywords" content="{#$pageinfo.keywords#}">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico">
+<meta property="qc:admins" content="77522437776156156026375">
+<!--public -->
+<link href="{#$QISHI.site_template#}css/global.css" rel="stylesheet" type="text/css">
+<script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
+<script src="{#$QISHI.site_template#}js/lpsjob-public.js"  type='text/javascript' ></script>
+<!--old -->
+<link href="{#$QISHI.site_template#}css/news2011.css" rel="stylesheet" type="text/css"  />
+<script src="{#$QISHI.site_template#}js/jquery.KinSlideshow.min.js" type="text/javascript"></script> 
+<!--new -->
+<link href="{#$QISHI.site_template#}css/index-2013.css" rel="stylesheet" type="text/css"> 
+<script src="{#$QISHI.site_template#}js/jquery.lazyload.js" type="text/javascript"></script>
+<link href="{#$QISHI.site_template#}css/style.css" rel="stylesheet" type="text/css"> 
+<script> 
+$(document).ready(function () {  
+    //new
+		   index("/","/templates/newbaoji/");
+		   $.get("/plus/ajax_user.php", {"act":"loginform"},
+			function (data,textStatus)
+			 {
+				$("#PageLogin").html(data);
+			 }
+	       );	
+    //old
+            $("#news_form_search #search_go").click(function()
+    {
+    $("body").append('<div id="pageloadingbox">页面加载中....</div><div id="pageloadingbg"></div>');
+    $("#pageloadingbg").css("opacity", 0.5);
+    $.get("{#$QISHI.site_dir#}plus/ajax_search_location.php", {"act":"QS_newssearch","key":$("#news_form_search #key").val(),"page":1},
+            function (data,textStatus)
+             {
+                 window.location.href=data;
+             }
+        );
+    });       
+})
+</script>
+</head><body>
+{#include file="user/header.ini"#}
+<div class="page_location link_bk">
+当前位置：<a href="{#$QISHI.site_dir#}">首页</a>&nbsp;>>&nbsp;<a href="{#"QS_news"|qishi_url#}">新闻资讯</a>&nbsp;>>&nbsp;<a href="{#$category.url#}">{#$category.title_#}</a>&nbsp;
+</div>
+<!-- main begin -->     
+<div class="main">
+  <div class="leftbox">
+      <div class="l-content">
+        <div class="news_lite_search">
+        <input name="txtSearchKey" type="text" id="txtSearchKey" class="news_lite_input" value="资讯搜索" style="width:180px;"/>
+        <input type="button" id="searchBtn" name="" class="news_lite_sub" />
+        <script type="text/javascript"> 
+        $("#index-search-button").click(function()
+        { 
+            index_search_location();
+        });
+        var searchBox = $('#txtSearchKey');
+        var defaultValue = '资讯搜索';
+        searchBox.focus(function (e) {
+            if ($(this).val() == defaultValue) $(this).val('').css({
+                "box-shadow": "none",
+                "border": "none"
+            });
+        });
+        searchBox.blur(function (e) {
+            if ($.trim($(this).val()).length <= 0) $(this).val(defaultValue);
+        });
+        searchBox.keydown(function (event) {
+            var e = $.event.fix(event);
+            if (e.keyCode == 13) {
+                SearchClick();
+            }
+        });
+        var searchBtn = $('#searchBtn');
+        searchBtn.click(function () {
+            SearchClick();
+        });
+        function SearchClick() {
+            if (searchBox.val().length <= 0 || searchBox.val() == defaultValue) {
+                alert("资讯搜索");
+                return false;
+            }
+            else {
+                $("body").append('<div id="pageloadingbox">页面加载中....</div><div id="pageloadingbg"></div>');
+                $("#pageloadingbg").css("opacity", 0.5);
+                $.get("/plus/ajax_search_location.php", {"act":"QS_newssearch","key":$(".news_lite_search #txtSearchKey").val(),"page":1},
+        function (data,textStatus)
+            {
+                window.location.href=data;
+            }
+             );
+        }
+    }
+</script> 
+    </div>
+  </div>
+       <div class="mar-10"></div>
+         <div class="l-content">
+         <h3><a href="#" class="l-tittle">最新资讯</a><a href="#" class="l-more"><img src="{#$QISHI.site_template#}images/img/more.png" width="36" height="18" /></a></h3>
+         <ul class="zclist">{#qishi_news_list set="列表名:news,显示数目:15,标题长度:16,排序:id>desc"#}
+            {#foreach from=$news item=list#}
+            <li>·<a href="{#$list.url#}" target="_blank">{#$list.title#}</a></li>
+            {#/foreach#}
+         </ul>
+      </div>
+      <div class="mar-10"></div>
+         <div class="l-content">
+         <h3><a href="#" class="l-tittle">最新岗位</a><a href="#" class="l-more"><img src="{#$QISHI.site_template#}images/img/more.png" width="36" height="18" /></a></h3>
+         <ul class="zclist">{#qishi_jobs_list set="列表名:list,显示数目:12"#}
+            {#foreach from=$list item=li#}
+            <li>·<a href="{#$li.jobs_url#}" target="_blank">{#$li.jobs_name#}-{#$li.companyname#}</a></li>
+                   {#/foreach#}
+        </ul>
+      </div>
+  </div>
+   <div class="rightbox">
+   	 <div class="jl-title">{#$category.title_#}</div>
+     {#qishi_news_list set="列表名:news,显示数目:10,标题长度:35,分页显示:1,标题长度:35,摘要长度:100,列表页:QS_newssearch,填补字符:...,关键字:GET[key],排序:id>desc"#}
+     
+    {#foreach from=$news item=list#}
+     <div class="jl-list">
+     	<img src="{#$QISHI.site_template#}images/img/list_r.png"/><div class="jl-list-p">
+        <a href="{#$list.url#}" target="_blank">{#$list.title#}</a>
+     </div>
+     	<p>发布时间：<span>{#$list.addtime|date_format:"%Y-%m-%d"#}</span>     点击次数：<span>{#$list.click#}</span></p>
+		  <!--<p>{#$list.content|cn_truncate:40:"...":true#}</p>-->
+          <p>{#$list.briefly#}<a href="{#$list.url#}">[全文]</a></p>
+     </div>
+     {#/foreach#}
+     <div class="page-next">{#$page#}<div class="clear"></div></div>
+   </div>
+</div> 
+<!-- main end -->   
+<div class="clear"></div>
+{#include file="user/footer.ini"#}
+
+</body></html>
